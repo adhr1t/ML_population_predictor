@@ -1,7 +1,4 @@
-# -*- coding: utf-8 -*-
 """
-Created on Fri Jun 11 11:08:56 2021
-
 @author: adhri
 """
 
@@ -14,4 +11,6 @@ import warnings
 warnings.filterwarnings("ignore")
 
 df = pd.read_csv("worldPopulations.csv")
-df
+
+#remove Country Code, Indicator Name, and Indicator Code
+df.drop(["Country Code", "Indicator Name", "Indicator Code"], axis=1, inplace=True)
