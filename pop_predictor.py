@@ -20,8 +20,13 @@ ind = ind.T
 
 #remove rows with None values
 ind.dropna(inplace = True)
-ind.head()
 
 #change column names
-ind.reset_index().rename(columns = {"index":"year", 107:"population"})
-ind.head()
+ind = ind.reset_index().rename(columns = {"index":"year", 107:"population"})
+
+
+x = ind.iloc[:, 0].values.reshape(-1, 1)
+y = ind.iloc[:, 1].values.reshape(-1, 1)
+model = LinearRegression().fit(x, y)
+y_pred = model.predict([[2020]])
+y_pred
