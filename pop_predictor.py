@@ -24,9 +24,25 @@ ind.dropna(inplace = True)
 #change column names
 ind = ind.reset_index().rename(columns = {"index":"year", 107:"population"})
 
-
-x = ind.iloc[:, 0].values.reshape(-1, 1)
-y = ind.iloc[:, 1].values.reshape(-1, 1)
+#model creation and prediction
+x = df.iloc[:, 0].values.reshape(-1, 1)
+y = df.iloc[:, 1].values.reshape(-1, 1)
 model = LinearRegression().fit(x, y)
 y_pred = model.predict([[2020]])
 y_pred
+
+
+
+def createModel(df):
+    x = df.iloc[:, 0].values.reshape(-1, 1)
+    y = df.iloc[:, 1].values.reshape(-1, 1)
+    model = LinearRegression().fit(x, y)
+    
+    
+def main():
+    country = input("Which country would you like to know about?").lower()
+    year = input("Which year do you want to predict the population of?").lower()
+    
+    
+if __name__ == "__main__":
+    main()
